@@ -1,0 +1,69 @@
+
+/* Navbar mobile menu transition */
+
+.mobileNavbarMenu{
+    transform: translateY(-100%);
+    transition: transform 0.4s linear;
+}
+.mobileNavbarMenuActive{
+    transform: translateY(0%);
+    transition: transform 0.4s linear;
+}
+
+/* Home page image slider */
+
+.slideImage:nth-child(1){
+    z-index: 45;
+}
+.slideImage:nth-child(2){
+    z-index: 44;
+}
+.slideImage:nth-child(3){
+    z-index: 43;
+}
+
+/* Slider animation keyframes */
+
+@keyframes next1 {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: -100%
+    }
+}
+
+@keyframes next2 {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: 0%
+    }
+}
+
+@keyframes prev1 {
+from {
+    left: 0%;
+}
+
+to {
+    left: 100%
+}
+}
+
+@keyframes prev2 {
+from {
+    left: -100%;
+}
+
+to {
+    left: 0%
+}
+}
+
+.dotActive{
+    background-color: #1a8b47;
+}
