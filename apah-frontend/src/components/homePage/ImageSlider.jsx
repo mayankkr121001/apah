@@ -82,7 +82,7 @@ function ImageSlider() {
         <div className='w-full h-[calc(100vh-80px)] relative'>
             <div className="slidesDiv w-full h-full">
                 {imageArray.map((image, index) => (
-                    <img key={index} ref={(el) => (imageRef.current[index] = el)} className="slideImage absolute w-full h-full brightness-[80%]" src={image} />
+                    <img key={index} ref={(el) => (imageRef.current[index] = el)} className="slideImage absolute w-full h-full brightness-[50%]" src={image} />
                 ))}
             </div>
             {/* <div className="navigationDiv w-full px-8 absolute top-[50%] translate-y-[-50%] left-0 z-[46] flex justify-between">
@@ -94,9 +94,9 @@ function ImageSlider() {
                     <div key={index} onClick={() => onDotsClick(index)} ref={(el) => (dotRef.current[index] = el)} className="dot w-3 h-3 bg-white rounded-full"></div>
                 ))}
             </div>
-            <div className='w-[70%] absolute text-center left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] px-7 py-10 z-[47]'>
-                <p className='text-4xl font-semibold text-white tracking-wide'>Innovative Membrane Technology for Superior Filtration</p>
-                <button className='font-semibold text-lg text-black rounded tracking-wide bg-primaryColor hover:bg-primaryColorHover transition px-16 py-2 mt-6'>Get Started</button>
+            <div className=' w-[90%] lg:w-[70%] absolute text-center left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] px-7 py-10 z-[47]'>
+                <p className='text-2xl md:text-4xl font-semibold text-white tracking-wide'>Innovative Membrane Technology for Superior Filtration</p>
+                <button className='font-semibold text-md md:text-lg text-black rounded tracking-wide bg-primaryColor hover:bg-primaryColorHover transition px-10 md:px-16 py-2 mt-6'>Get Started</button>
             </div>
         </div>
     )
