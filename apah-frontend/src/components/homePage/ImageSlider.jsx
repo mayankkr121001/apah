@@ -91,7 +91,7 @@ function ImageSlider() {
             </div> */}
             <div className="navigationDotsDiv absolute bottom-5 left-[50%] translate-x-[-50%] z-[46] flex gap-2">
                 {imageArray.map((image, index) => (
-                    <div key={index} onClick={() => onDotsClick(index)} ref={(el) => (dotRef.current[index] = el)} className="dot w-3 h-3 bg-white rounded-full"></div>
+                    <div key={index} onClick={() => onDotsClick(index)} ref={(el) => (dotRef.current[index] = el)} className="dot w-3 h-3 border-[1px] border-white rounded-full"></div>
                 ))}
             </div>
             <div className=' w-[90%] lg:w-[70%] absolute text-center left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] px-7 py-10 z-[47]'>

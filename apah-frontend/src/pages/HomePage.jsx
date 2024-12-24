@@ -2,6 +2,7 @@
  import Navbar from '../components/homePage/Navbar.jsx'
  import ImageBanner from '../components/homePage/ImageBanner.jsx'
  import ImageSlider from '../components/homePage/ImageSlider.jsx'
+ import WaterTreatment from '../components/homePage/WaterTreatment.jsx'
  
  function HomePage() {
    return (
@@ -9,6 +10,7 @@
         <Navbar/>
         {/* <ImageBanner/> */}
         <ImageSlider/>
+        <WaterTreatment/>
      </div>
    )
  }

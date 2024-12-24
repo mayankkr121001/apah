@@ -1,4 +1,8 @@
 
+:root{
+    --primaryColor: #1a8b47;
+}
+
 /* Navbar mobile menu transition */
 
 .mobileNavbarMenu{
@@ -65,5 +69,6 @@ to {
 }
 
 .dotActive{
-    background-color: #1a8b47;
+    background-color: var(--primaryColor);
+    border: 1px solid var(--primaryColor);
 }
