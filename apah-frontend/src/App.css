@@ -4,7 +4,9 @@
 }
 
 /* Navbar mobile menu transition */
-
+body{
+    overflow-x: hidden;
+}
 .mobileNavbarMenu{
     transform: translateY(-100%);
     transition: transform 0.4s linear;

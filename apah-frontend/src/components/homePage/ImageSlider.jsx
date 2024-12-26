@@ -8,12 +8,18 @@ const imageArray = [bannerImage1, bannerImage2, bannerImage3];
 function ImageSlider() {
     const imageRef = useRef([]);
     const dotRef = useRef([]);
+    const slidesDivRef = useRef(null);
+    const [smallScreenFlag, setSmallScreenFlag] = useState(false);
 
     let counter;
     useEffect(() => {
         dotRef.current[0]?.classList.add('dotActive');
         startSlider();
         counter = 0;
+        if (screen.width < 768) {
+            setSmallScreenFlag(true);
+        }
+
     }, [])
 
     function updateDots(counter) {
@@ -24,8 +30,7 @@ function ImageSlider() {
     }
 
     function onDotsClick(index) {
-        console.log("dot clicked", index, counter);
-
+        // console.log("dot clicked", index, counter);
         if (index === counter) return;
         stopSlider();
         if (index > counter) {
@@ -75,20 +80,74 @@ function ImageSlider() {
         clearInterval(sliderInterval);
     }
 
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    function pointerDownFunc(e) {
+        isDown = true;
+        startX = e.pageX - slidesDivRef.current.offsetLeft;
+        scrollLeft = slidesDivRef.current.scrollLeft;
+    };
+    function pointerLeaveUpFunc() {
+        isDown = false;
+    };
+
+    function pointerMoveFunc(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slidesDivRef.current.offsetLeft;
+        const walk = (x - startX);
+        slidesDivRef.current.scrollLeft = scrollLeft - walk;
+        if (walk < 0) {
+            stopSlider();
+            nextSlide();
+            startSlider();
+        }
+        else if (walk > 0) {
+            stopSlider();
+            prevSlide();
+            startSlider();
+        }
+    }
+
+
+    let hasCheckedDeltaX = false;
+    function onScrollFunc(e) {
+        // console.log("scrolling");
+
+        if (!hasCheckedDeltaX) {
+            hasCheckedDeltaX = true;
+
+            if (e.deltaX > 0) {
+                stopSlider();
+                nextSlide();
+                startSlider();
+            }
+            else if (e.deltaX < 0) {
+                stopSlider();
+                prevSlide();
+                startSlider();
+            }
+            setTimeout(() => {
+                hasCheckedDeltaX = false;
+            }, 1800);
+        }
+    }
 
 
 
     return (
         <div className='w-full h-[calc(100vh-80px)] relative'>
-            <div className="slidesDiv w-full h-full">
+            <div ref={slidesDivRef} className="slidesDiv w-full h-full" onPointerDown={smallScreenFlag ? (e) => pointerDownFunc(e): undefined} onPointerLeave={smallScreenFlag ? pointerLeaveUpFunc: undefined} onPointerUp={smallScreenFlag ? pointerLeaveUpFunc: undefined} onPointerMove={smallScreenFlag ? (e) => pointerMoveFunc(e): undefined} onWheel={(e) => onScrollFunc(e)}>
                 {imageArray.map((image, index) => (
                     <img key={index} ref={(el) => (imageRef.current[index] = el)} className="slideImage absolute w-full h-full brightness-[50%]" src={image} />
                 ))}
             </div>
             {/* <div className="navigationDiv w-full px-8 absolute top-[50%] translate-y-[-50%] left-0 z-[46] flex justify-between">
-                <p onClick={() => { stopSlider(); nextSlide(); startSlider(); }} className="leftArrow text-white text-4xl cursor-default">&#10094;</p>
-                <p onClick={() => { stopSlider(); prevSlide(); startSlider(); }} className="rightArrow text-white text-4xl cursor-default">&#10095;</p>
-            </div> */}
+                    <p onClick={() => { stopSlider(); nextSlide(); startSlider(); }} className="leftArrow text-white text-4xl cursor-default">&#10094;</p>
+                    <p onClick={() => { stopSlider(); prevSlide(); startSlider(); }} className="rightArrow text-white text-4xl cursor-default">&#10095;</p>
+                </div> */}
             <div className="navigationDotsDiv absolute bottom-5 left-[50%] translate-x-[-50%] z-[46] flex gap-2">
                 {imageArray.map((image, index) => (
                     <div key={index} onClick={() => onDotsClick(index)} ref={(el) => (dotRef.current[index] = el)} className="dot w-3 h-3 border-[1px] border-white rounded-full"></div>

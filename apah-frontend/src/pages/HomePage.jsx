@@ -3,6 +3,7 @@
  import ImageBanner from '../components/homePage/ImageBanner.jsx'
  import ImageSlider from '../components/homePage/ImageSlider.jsx'
  import WaterTreatment from '../components/homePage/WaterTreatment.jsx'
+ import UsUnique from '../components/homePage/UsUnique.jsx'
  
  function HomePage() {
    return (
@@ -11,6 +12,7 @@
         {/* <ImageBanner/> */}
         <ImageSlider/>
         <WaterTreatment/>
+        <UsUnique/>
      </div>
    )
  }
