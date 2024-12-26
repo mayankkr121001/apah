@@ -32,7 +32,7 @@ function Navbar() {
                     </div>}
                     {menuIconFlag && <div onClick={() => setMenuIconFlag(false)} className='text-primaryColor text-4xl cursor-default'>X</div>}
                 </div>
-                {(smallScreenFlag) && <div className={`flex ${menuIconFlag ? 'mobileNavbarMenuActive' : 'mobileNavbarMenu'} flex-col absolute z-[48] w-full top-[80px] left-0 bg-primaryColor text-white`}>
+                {(smallScreenFlag) && <div className={`flex ${menuIconFlag ? 'mobileNavbarMenuActive' : 'mobileNavbarMenu'} flex-col absolute z-[48] w-screen top-[80px] left-0 bg-primaryColor text-white`}>
                     {navLinksArary.map((value, index) => (
                         <span key={index} className='inline mx-10 md:mx-20 my-4'><Link to="/" className='text:md font-semibold hover:text-black transition'>{value}</Link></span>
                     ))}

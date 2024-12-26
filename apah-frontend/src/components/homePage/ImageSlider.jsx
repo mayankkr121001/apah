@@ -11,16 +11,16 @@ function ImageSlider() {
     const slidesDivRef = useRef(null);
     const [smallScreenFlag, setSmallScreenFlag] = useState(false);
 
-    let counter;
+    let counter = 0;
     useEffect(() => {
         dotRef.current[0]?.classList.add('dotActive');
-        startSlider();
-        counter = 0;
-        if (screen.width < 768) {
+        // startSlider();
+        // counter = 0;
+        if (window.innerWidth < 768) {
             setSmallScreenFlag(true);
+            console.log("mobile");
         }
-
-    }, [])
+    }, []);
 
     function updateDots(counter) {
         dotRef.current?.forEach((dot, index) => {
@@ -48,6 +48,7 @@ function ImageSlider() {
     }
 
     function nextSlide() {
+        // if(!imageRef.current[counter]) return;
         imageRef.current[counter].style.animation = 'next1 2s ease-in forwards';
         if (counter >= imageRef.current.length - 1) {
             counter = 0;
@@ -60,6 +61,8 @@ function ImageSlider() {
         updateDots(counter);
     }
     function prevSlide() {
+        // if(!imageRef.current[counter]) return;
+        
         imageRef.current[counter].style.animation = 'prev1 2s ease-in forwards';
         if (counter <= 0) {
             counter = imageRef.current.length - 1;
@@ -75,41 +78,50 @@ function ImageSlider() {
     function startSlider() {
         sliderInterval = setInterval(nextSlide, 6000);
     }
+    startSlider();
 
     function stopSlider() {
         clearInterval(sliderInterval);
     }
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    // let isDown = false;
+    // let startX;
+    // let scrollLeft;
 
-    function pointerDownFunc(e) {
-        isDown = true;
-        startX = e.pageX - slidesDivRef.current.offsetLeft;
-        scrollLeft = slidesDivRef.current.scrollLeft;
-    };
-    function pointerLeaveUpFunc() {
-        isDown = false;
-    };
+    // function pointerDownFunc(e) {
+    //     // if (smallScreenFlag) {
+    //         isDown = true;
+    //         startX = e.pageX - slidesDivRef.current.offsetLeft;
+    //         scrollLeft = slidesDivRef.current.scrollLeft;
+    //     // }
+    // };
+    // function pointerLeaveUpFunc() {
+    //     // if (smallScreenFlag) {
+    //         isDown = false;
+    //     // }
+    // };
 
-    function pointerMoveFunc(e) {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slidesDivRef.current.offsetLeft;
-        const walk = (x - startX);
-        slidesDivRef.current.scrollLeft = scrollLeft - walk;
-        if (walk < 0) {
-            stopSlider();
-            nextSlide();
-            startSlider();
-        }
-        else if (walk > 0) {
-            stopSlider();
-            prevSlide();
-            startSlider();
-        }
-    }
+    // function pointerMoveFunc(e) {
+    //     // if (smallScreenFlag) {
+    //         if (!isDown) return;
+    //         e.preventDefault();
+    //         const x = e.pageX - slidesDivRef.current.offsetLeft;
+    //         const walk = (x - startX);
+    //         slidesDivRef.current.scrollLeft = scrollLeft - walk;
+    //         // console.log(walk);
+            
+    //         if (walk < 0) {
+    //             stopSlider();
+    //             nextSlide();
+    //             startSlider();
+    //         }
+    //         else if (walk > 0) {
+    //             stopSlider();
+    //             prevSlide();
+    //             startSlider();  
+    //         }
+    //     // }
+    // }
 
 
     let hasCheckedDeltaX = false;
@@ -139,7 +151,8 @@ function ImageSlider() {
 
     return (
         <div className='w-full h-[calc(100vh-80px)] relative'>
-            <div ref={slidesDivRef} className="slidesDiv w-full h-full" onPointerDown={smallScreenFlag ? (e) => pointerDownFunc(e): undefined} onPointerLeave={smallScreenFlag ? pointerLeaveUpFunc: undefined} onPointerUp={smallScreenFlag ? pointerLeaveUpFunc: undefined} onPointerMove={smallScreenFlag ? (e) => pointerMoveFunc(e): undefined} onWheel={(e) => onScrollFunc(e)}>
+            <div ref={slidesDivRef} className="slidesDiv w-full h-full" onWheel={(e) => onScrollFunc(e)}>
+                {/* <div ref={slidesDivRef} className="slidesDiv w-full h-full" onPointerDown={smallScreenFlag ? (e) => pointerDownFunc(e): undefined} onPointerLeave={smallScreenFlag ? pointerLeaveUpFunc: undefined} onPointerUp={smallScreenFlag ? pointerLeaveUpFunc: undefined} onPointerMove={smallScreenFlag ? (e) => pointerMoveFunc(e): undefined} onWheel={(e) => onScrollFunc(e)}> */}
                 {imageArray.map((image, index) => (
                     <img key={index} ref={(el) => (imageRef.current[index] = el)} className="slideImage absolute w-full h-full brightness-[50%]" src={image} />
                 ))}
