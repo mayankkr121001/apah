@@ -7,8 +7,8 @@ function UsUnique() {
     return (
         <div className='w-full px-[8%] py-16'>
             <div className='w-full'>
-                <h2 className='text-primaryColor text-2xl sm:text-3xl font-semibold text-center'>What Makes Us Unique ?</h2>
-                <div className='flex flex-wrap gap-8 mt-14 w-full'>
+                <h2 className='text-primaryColor text-2xl sm:text-3xl font-semibold text-center font-fredoka'>What Makes Us Unique ?</h2>
+                <div className='flex flex-wrap gap-8 mt-12 w-full justify-center'>
                     <div className='flex  flex-col tracking-wide gap-6 md:w-[30%]'>
                         <div className='w-full'>
                             <img className='w-full h-[300px]' src={usUnique1} alt="image" />
