@@ -11,7 +11,7 @@ function UsUnique() {
                 <div className='flex flex-wrap gap-8 mt-12 w-full justify-center'>
                     <div className='flex  flex-col tracking-wide gap-6 md:w-[30%]'>
                         <div className='w-full'>
-                            <img className='w-full h-[300px]' src={usUnique1} alt="image" />
+                            <img className='w-full h-[300px] rounded' src={usUnique1} alt="image" />
                         </div>
                         <div className='w-[90%]'>
                             <h3 className='text-2xl font-semibold text-primaryColor mb-5'>Small Size
@@ -22,7 +22,7 @@ function UsUnique() {
 
                     <div className='flex flex-col tracking-wide gap-6 md:w-[30%]'>
                         <div className='w-full'>
-                            <img className='w-full h-[300px]' src={usUnique2} alt="image" />
+                            <img className='w-full h-[300px] rounded' src={usUnique2} alt="image" />
                         </div>
                         <div className='w-[90%]'>
                             <h3 className='text-2xl font-semibold text-primaryColor mb-5'>Trust of Quality</h3>
@@ -32,7 +32,7 @@ function UsUnique() {
 
                     <div className='flex  flex-col tracking-wide gap-6 md:w-[30%]'>
                         <div className='w-full'>
-                            <img className='w-full h-[300px]' src={usUnique3} alt="image" />
+                            <img className='w-full h-[300px] rounded' src={usUnique3} alt="image" />
                         </div>
                         <div className='w-[90%]'>
                             <h3 className='text-2xl font-semibold text-primaryColor mb-5'>Cost-Effective</h3>

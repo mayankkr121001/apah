@@ -31,7 +31,7 @@ function ImageSlider() {
 
     function onDotsClick(index) {
         // console.log("dot clicked", index, counter);
-        if (index === counter) return;
+        // if (index === counter) return;
         stopSlider();
         if (index > counter) {
             imageRef.current[counter].style.animation = "next1 2s ease-in forwards";

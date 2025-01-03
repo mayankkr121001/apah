@@ -2,7 +2,7 @@ import React from 'react'
 
 function WaterTreatment() {
   return (
-    <div className='w-full px-[5%] pt-20'>
+    <div className='w-full px-[5%] pt-10 sm:pt-20'>
         <div>
             <h2 className='text-primaryColor text-2xl sm:text-3xl font-semibold text-center font-fredoka'>Your Partner in Water Treatment & Process Filtration</h2>
             <div className='flex flex-col sm:flex-row bg-[#f4fff8] py-10 px-[5%] gap-[40px] sm:gap-[5%] my-10 tracking-wide'>
